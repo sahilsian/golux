@@ -3,8 +3,10 @@ import styled from "styled-components";
 const Container = styled.div``;
 const MenuAction = styled.div``;
 
+type NODE_TYPE = "ACTION_NODE" | "CATEGORY_NODE";
+
 interface MenuNodeProps {
-    node: Node
+    type: NODE_TYPE;
 }
 
 /*
@@ -16,6 +18,14 @@ When this
 
 const MenuNode = ({type}:MenuNodeProps) => {
 
+    switch (type) {
+        case "ACTION_NODE":
+            return <MenuAction></MenuAction>
+        case "CATEGORY_NODE":
+            return <Container></Container>
     }
+
+
+}
 
 export default MenuNode

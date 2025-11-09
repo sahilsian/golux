@@ -1,4 +1,4 @@
-import React, {type PropsWithChildren} from "react";
+import {type PropsWithChildren} from "react";
 import styled from "styled-components";
 
 
@@ -11,10 +11,9 @@ interface ContainerProps {
 
 const Container = styled.div<ContainerProps>``;
 
-const CategoryDecorator = ({children}:CategoryDecoratorProps) => {
+const CategoryDecorator = ({}:CategoryDecoratorProps) => {
     return (
         <Container>
-            {children}
         </Container>
     )
 }
