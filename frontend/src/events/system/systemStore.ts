@@ -1,21 +1,21 @@
 import {configureStore} from "@reduxjs/toolkit";
-import connectReducer from "./connectSlice";
+import systemReducer from "./systemSlice.ts";
 
 // Manage the connection state with connectReducer
-export const connectStore = configureStore({
+export const systemStore = configureStore({
     reducer: {
-        connect: connectReducer,
+        system: systemReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {
             // ignore the hub connection because signalR cannot be serialized into JSON
-            ignoredActions: ['connect/setConnected', 'connect/createConnection/fulfilled'],
-            ignoredPaths: ['connect.connected', 'connect.connection']
+            ignoredActions: ['system/setConnected', 'system/createConnection/fulfilled'],
+            ignoredPaths: ['system.connected', 'system.connection']
         }
     })
 });
 
 // Returns the main state of the connection store
-export type RootState = ReturnType<typeof connectStore.getState>;
+export type RootState = ReturnType<typeof systemStore.getState>;
 // Returns the dispatch function of the connection store
-export type AppDispatch = typeof connectStore.dispatch;
+export type AppDispatch = typeof systemStore.dispatch;

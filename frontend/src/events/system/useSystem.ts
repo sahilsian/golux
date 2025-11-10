@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import type {AppDispatch, RootState} from "./connectStore.ts";
-import {clearError, createConnection, removeConnection} from "./connectSlice.ts";
+import type {AppDispatch, RootState} from "./systemStore.ts";
+import {clearError, createConnection, removeConnection} from "./systemSlice.ts";
 
 export const useAppDispatch =
     () =>
@@ -9,9 +9,9 @@ export const useAppSelector =
     <T>(selector: (state: RootState) => T) =>
         useSelector(selector)
 
-const useConnect = () => {
+const useSystem = () => {
     const dispatch = useAppDispatch();
-    const { connection, status, error } = useAppSelector(state => state.connect);
+    const { connection, status, error } = useAppSelector(state => state.system);
 
     const connect = (url: string) =>
         dispatch(createConnection(url));
@@ -31,4 +31,4 @@ const useConnect = () => {
 
 }
 
-export default useConnect;
+export default useSystem;

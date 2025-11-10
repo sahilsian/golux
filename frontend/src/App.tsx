@@ -1,7 +1,7 @@
 import './App.css'
 import Button from "./components/ui/control/button";
 import {AmbulanceIcon} from "lucide-react";
-import useConnect from "./connect/useConnect.ts";
+import useConnect from "./events/system/useSystem.ts";
 import {useEffect} from "react";
 
 function App() {
