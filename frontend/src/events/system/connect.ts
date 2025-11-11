@@ -1,0 +1,1 @@
+// Connect: granular lifecycle events throughout the system for connecting to the websocket

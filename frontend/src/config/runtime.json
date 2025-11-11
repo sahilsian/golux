@@ -1,0 +1,5 @@
+{
+  "HUB_URL": "http://localhost:5073/hub",
+  "API_URL": "http://localhost:5073/api/v1",
+  "ENVIRONMENT": "development"
+}

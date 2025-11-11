@@ -1,14 +1,27 @@
 import styled from "styled-components";
 import Typography from "../../components/ui/typography";
+import type { PropsWithChildren } from "react";
+import type { baseWebEvent } from "../../models/webEvents/baseWebEvent";
 
-const Container = styled.div``;
+interface DashboardProps extends PropsWithChildren {
+    event?: baseWebEvent;
+}
 
-const Dashboard = () => {
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+`;
+
+const Dashboard = ({ event, children }: DashboardProps) => {
+    console.log("🧭 Dashboard event:", event);
     return (
         <Container>
             <Typography value="Hello World" />
+            {children}
         </Container>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;

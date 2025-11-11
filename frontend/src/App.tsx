@@ -1,30 +1,17 @@
 import './App.css'
 import Button from "./components/ui/control/button";
 import {AmbulanceIcon} from "lucide-react";
-import useConnect from "./events/system/useSystem.ts";
+import useSystem from "./hooks/useSystem.ts";
 import {useEffect} from "react";
-
 function App() {
-    const {connect, connection} = useConnect();
-    const handleConnection = () => {
-        connect("http://localhost:5073/hub");
-    }
-
-    const send = () => {
-        console.log("Sending a message");
-        connection && connection.send("SendMessage", "SAHIL", "LOL")
-    }
+    const {status, createConnection} = useSystem();
 
     useEffect(() => {
-        if (!connection) return;
-
-        const handler = (username: string, message: string) => {
-            console.log("📩 Message received:", username, message)
-        };
-
-        connection.on("RecieveMessage", handler);
-
-    }, [connection]);
+        console.log("Status changed to", status);
+        if (status === "idle") {
+            createConnection("http://localhost:5073/hub");
+        }
+    }, [status]);
 
     return (
         <div className='entry'>
@@ -34,7 +21,6 @@ function App() {
                     component: <AmbulanceIcon/>,
                     size: 'medium'
                 }}
-                onClick={handleConnection}
                 label={"Connect"}
             >
 
@@ -45,7 +31,6 @@ function App() {
                     component: <AmbulanceIcon/>,
                     size: 'medium'
                 }}
-                onClick={send}
                 label={"Send a lol"}
             >
 
